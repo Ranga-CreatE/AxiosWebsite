@@ -1,0 +1,2541 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axios Unlimited </title>
+  <link rel="icon" type="image/png" href="Images/loGO.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; scroll-behavior: smooth; }
+    
+    .font-heading { font-family: 'Montserrat', sans-serif; letter-spacing: -0.5px; font-weight: 700; }
+    .font-body { font-family: 'Inter', sans-serif; }
+    
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(60px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+    
+    @keyframes glowPulse {
+      0%, 100% { box-shadow: 0 0 20px rgba(201, 162, 74, 0.3), 0 0 40px rgba(201, 162, 74, 0.1); }
+      50% { box-shadow: 0 0 30px rgba(201, 162, 74, 0.5), 0 0 60px rgba(201, 162, 74, 0.2); }
+    }
+    
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-60px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    
+    @keyframes rotateBorder {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    
+    @keyframes techPulse {
+      0%, 100% { box-shadow: 0 0 10px rgba(201, 162, 74, 0.2), inset 0 0 10px rgba(201, 162, 74, 0.05); }
+      50% { box-shadow: 0 0 20px rgba(201, 162, 74, 0.4), inset 0 0 20px rgba(201, 162, 74, 0.1); }
+    }
+    
+    .anim-fade-up { animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+    .anim-fade-in { animation: fadeIn 0.9s ease-out forwards; opacity: 0; }
+    .anim-scale { animation: scaleIn 0.8s ease-out forwards; opacity: 0; }
+    .anim-float { animation: floatIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+    .anim-slide-right { animation: slideInRight 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+    .anim-slide-left { animation: slideInLeft 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+    .animate-gradient-bg {
+      animation: moveGradient 12s ease-in-out infinite;
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.92), rgba(32, 8, 35, 0.95), rgba(10, 10, 10, 0.92));
+      background-size: 300% 300%;
+    }
+
+    @keyframes moveGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+@keyframes floatUpDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.anim-float-up-down {
+  animation: floatUpDown 2s ease-in-out infinite;
+}
+
+.anim-pulse {
+  animation: pulse 2s infinite;
+}
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    
+    .gradient-dark { background: linear-gradient(135deg, #2B2B2B 0%, #1a1a1a 100%); }
+    .gradient-gold { background: linear-gradient(135deg, #C9A24A 0%, #A67C3B 100%); }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    }
+    
+    .btn-primary {
+      background-color: #C9A24A;
+      color: white;
+      font-weight: 600;
+      padding: 12px 32px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background-color: #A67C3B;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(201, 162, 74, 0.3);
+    }
+    
+    .btn-secondary {
+      background-color: transparent;
+      color: #C9A24A;
+      font-weight: 600;
+      padding: 12px 32px;
+      border: 2px solid #C9A24A;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #C9A24A;
+      color: white;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: scaleIn 0.3s ease-out;
+    }
+    
+    .modal-content.large {
+      max-width: 900px;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .modal-content.schedule {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+      border: 1px solid rgba(201, 162, 74, 0.2);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2), 0 0 40px rgba(201, 162, 74, 0.15);
+      animation: floatIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .framework-modal-content {
+      background: radial-gradient(circle at top left, rgba(201, 162, 74, 0.2), rgba(10, 10, 10, 0.95));
+      border: 1px solid rgba(201, 162, 74, 0.8);
+      box-shadow: 0 35px 75px rgba(0, 0, 0, 0.45), inset 0 0 40px rgba(201, 162, 74, 0.1);
+      animation: glowIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      backdrop-filter: blur(16px);
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .framework-title {
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      animation: slideInUp 0.6s ease-out;
+    }
+
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.5s ease-out;
+    }
+
+    @media (min-width: 768px) {
+      .framework-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .framework-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .framework-card {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(201, 162, 74, 0.2);
+      border-radius: 0.9rem;
+      padding: 1rem;
+      color: #fff;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      backdrop-filter: blur(7px);
+      animation: floatIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .framework-card:hover {
+      transform: translateY(-6px) scale(1.01);
+      box-shadow: 0 18px 40px rgba(201, 162, 74, 0.45);
+      border-color: rgba(201, 162, 74, 0.6);
+    }
+
+    .framework-card h3 {
+      color: #F7E9B2;
+      margin-bottom: 0.5rem;
+      font-size: 1.15rem;
+      text-transform: uppercase;
+    }
+
+    .framework-card p {
+      color: #d1d1d1;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    @keyframes glowIn {
+      0% { transform: scale(0.97); opacity: 0; filter: blur(2px); }
+      60% { transform: scale(1.01); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; filter: blur(0); }
+    }
+
+    @keyframes freezeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .modal-show .modal-content {
+      animation: glowIn 0.45s ease-out;
+    }
+
+    .page-section {
+      display: none;
+    }
+    
+    .page-section.active {
+      display: block;
+      animation: fadeUp 0.5s ease-out;
+    }
+    
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 1.2rem;
+      overflow: auto;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content { max-width: 1100px; width: 100%; }
+
+    .modal-close {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      color: #fff;
+      font-size: 2rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      z-index: 10001;
+    }
+
+    .theme-toggle {
+      border: 1px solid #C9A24A;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.45rem 0.8rem;
+      border-radius: 0.35rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-left: 0.75rem;
+    }
+
+    .theme-toggle:hover {
+      background: #C9A24A;
+      color: #121212;
+    }
+
+    .day-mode {
+      --page-bg: #F4F4F4;
+      --card-bg: #ffffff;
+      --text-main: #222;
+      --text-muted: #333;
+      --glass-bg: rgba(255,255,255,0.75);
+      --border-color: rgba(201,162,74,0.25);
+    }
+
+    .dark-mode {
+      --page-bg: #0A0A0A;
+      --card-bg: #111;
+      --text-main: #F2F2F2;
+      --text-muted: #ccc;
+      --glass-bg: rgba(10,10,10,0.7);
+      --border-color: rgba(201,162,74,0.35);
+    }
+
+    .day-mode {
+      --page-bg: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --text-main: #1A1A1A;
+      --text-muted: #6B6B6B;
+      --glass-bg: rgba(255,255,255,0.92);
+      --border-color: rgba(201,162,74,0.30);
+    }
+
+    body {
+      background: var(--page-bg);
+      color: var(--text-main);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .glass-container {
+      background: var(--glass-bg);
+      border-color: var(--border-color);
+    }
+
+    #main-nav .glass-container {
+      width: 90%;
+      max-width: 1600px;
+      margin: 0 auto;
+      min-height: 98px;
+      height: auto;
+      transition: all 0.4s ease;
+    }
+
+    #main-nav .glass-container nav {
+      justify-content: center;
+      min-width: min(740px, 100%);
+      gap: 1.2rem;
+    }
+
+    @media (max-width: 1280px) {
+      #main-nav .glass-container { width: 85%; }
+      #main-nav .glass-container nav { gap: 1rem; }
+    }
+
+    .card-hover, .practice-card, .framework-box, .maturity-level, .page-section > section {
+      background: var(--card-bg);
+      color: var(--text-main);
+    }
+
+    .page-section > section {
+      background: linear-gradient(135deg, rgba(8, 8, 12, 0.95), rgba(12, 12, 25, 0.90));
+      border: 1px solid rgba(201, 162, 74, 0.12);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+      backdrop-filter: blur(6px);
+    }
+
+    .page-section > section, .page-section .glass-panel, .page-section .practice-card-futuristic {
+      background: linear-gradient(135deg, rgba(8, 8, 12, 0.95), rgba(12, 12, 25, 0.90));
+      border: 1px solid rgba(201, 162, 74, 0.12);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(8px);
+    }
+
+    #about-page {
+      background: linear-gradient(145deg, rgba(8, 9, 25, 1), rgba(12, 12, 35, 1) 45%, rgba(17, 16, 40, 0.92));
+    }
+
+    #about-page .about-hero-panel {
+      border: 1px solid rgba(201, 162, 74, 0.26);
+      background: rgba(6, 7, 18, 0.78);
+      box-shadow: 0 20px 35px rgba(0,0,0,0.35);
+      backdrop-filter: blur(10px);
+      padding: 2.5rem;
+      border-radius: 1rem;
+    }
+
+    #about-page .about-hero-panel h2,
+    #about-page .about-hero-panel p {
+      color: #E7E7E7;
+    }
+
+    #about-page .stat-card-futuristic .counter-box {
+      color: #FFC763;
+      letter-spacing: 0.03em;
+    }
+
+    .dark-mode .nav-link,
+    .dark-mode .nav-link:hover,
+    .dark-mode .nav-link.active {
+      color: #E2C976;
+    }
+
+    .day-mode .nav-link,
+    .day-mode .nav-link:hover,
+    .day-mode .nav-link.active {
+      color: #6B4B1E;
+    }
+
+    .day-mode .page-section > section,
+    .day-mode .glass-panel,
+    .day-mode .practice-card-futuristic,
+    .day-mode .stat-card-futuristic,
+    .day-mode .contact-card-futuristic {
+      background: #FFFFFF;
+      color: #1F1F1F;
+      border-color: rgba(201,162,74,0.2);
+    }
+
+    .day-mode .gold-gradient-text {
+      background: linear-gradient(135deg, #C9A24A 0%, #8A6D2D 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (max-width: 1024px) {
+      .glass-container { padding: 0.75rem; }
+      .font-heading { font-size: clamp(1.5rem, 5vw, 2.6rem); }
+      .hero-btn-primary, .hero-btn-secondary, .cta-button { width: 100%; text-align:center; }
+    }
+
+    .nav-link {
+      position: relative;
+      overflow: hidden;
+      transition: color 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background-color: #C9A24A;
+      transition: left 0.3s ease;
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      left: 0;
+    }
+    
+    .practice-card {
+      background: white;
+      border-left: 4px solid #C9A24A;
+      padding: 24px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    
+    .practice-card:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      transform: translateX(8px);
+    }
+    
+    .framework-box {
+      background: linear-gradient(135deg, #f8f8f8 0%, #ffffff 100%);
+      border: 2px solid #C9A24A;
+      border-radius: 8px;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .maturity-level {
+      background: white;
+      border: 1px solid #e5e5e5;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    
+    .maturity-level:hover {
+      border-color: #C9A24A;
+      box-shadow: 0 10px 30px rgba(201, 162, 74, 0.2);
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.3s ease;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #C9A24A;
+      box-shadow: 0 0 0 3px rgba(201, 162, 74, 0.1);
+    }
+    
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    
+    .practice-grid-item {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(201, 162, 74, 0.15);
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+    }
+    
+    .practice-grid-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #C9A24A 0%, #A67C3B 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .practice-grid-item:hover::before {
+      transform: scaleX(1);
+    }
+    
+    .practice-grid-item:hover {
+      transform: translateY(-16px);
+      box-shadow: 0 20px 50px rgba(201, 162, 74, 0.2), 0 0 30px rgba(201, 162, 74, 0.1);
+      border-color: #C9A24A;
+    }
+    
+    .practice-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #C9A24A 0%, #A67C3B 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 30px rgba(201, 162, 74, 0.2);
+      transition: all 0.4s ease;
+    }
+    
+    .practice-grid-item:hover .practice-icon {
+      transform: rotate(12deg) scale(1.1);
+    }
+
+    .counter-box {
+      font-size: 48px;
+      font-weight: 800;
+      color: #C9A24A;
+      animation: countUp 0.6s ease-out;
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    .values-item {
+      background: linear-gradient(135deg, #C9A24A 0%, #A67C3B 100%);
+      color: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      opacity: 1;
+      transform: translateY(0);
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .values-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .values-item {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      .values-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .values-item {
+        animation: slideInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      .values-item:nth-child(1) { animation-delay: 0.1s; }
+      .values-item:nth-child(2) { animation-delay: 0.16s; }
+      .values-item:nth-child(3) { animation-delay: 0.22s; }
+      .values-item:nth-child(4) { animation-delay: 0.28s; }
+      .values-item:nth-child(5) { animation-delay: 0.34s; }
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #C9A24A 0%, #A67C3B 100%);
+      border-radius: 50%;
+      color: white;
+      transition: all 0.3s ease;
+      margin: 0 8px;
+    }
+
+    .social-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(201, 162, 74, 0.4);
+    }
+
+    .tech-line {
+      position: relative;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #C9A24A, transparent);
+      margin: 40px 0;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full font-body dark-mode" style="margin: 0;">
+  <!-- Navigation --><nav class="fixed w-full top-0 z-50 transition-all duration-700 ease-in-out py-8" id="main-nav">
+  <div class="w-full mx-auto px-4 lg:px-8">
+    <div class="glass-container w-full max-w-full flex flex-col lg:flex-row justify-between items-center px-8 rounded-2xl border border-white/5 transition-all duration-700 lg:h-32" id="nav-inner">
+      
+      <!-- Top Bar: Mobile/Tablet/iPad Layout (Logo - Schedule - Hamburger) -->
+      <div class="flex justify-center lg:justify-between items-center w-full lg:w-auto lg:flex-1 mb-4 lg:mb-0 gap-6 lg:gap-0">
+        <!-- Logo (Center/Left on Mobile) -->
+        <div class="flex items-center group cursor-pointer flex-shrink-0 lg:flex-1 animate-slide-in-left anim-pulse">
+          <a href="#home-page" id="logo-link" class="flex items-center space-x-5">
+            <div class="relative">
+              <img 
+                src="Images/loGO.png" 
+                alt="Axios Mark" 
+                class="h-16 w-auto logo-glow transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+              >
+              <div class="absolute -inset-4 bg-[#C9A24A] opacity-0 group-hover:opacity-10 blur-2xl transition-opacity duration-700"></div>
+            </div>
+            <div class="hidden lg:flex flex-col border-l border-white/10 pl-5">
+              <span class="text-2xl font-extrabold tracking-[0.2em] text-white uppercase leading-none">Axios</span>
+              <span class="text-[11px] gold-gradient-text font-black uppercase tracking-[0.5em] mt-2">Unlimited</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Schedule Button (Center between Logo and Hamburger on Mobile/Tablet) -->
+        <div class="flex lg:hidden flex-shrink-0 animate-fade-in">
+          <a href="#contact-page" class="cta-button mobile-small hover:scale-110 transition-transform">
+            Schedule
+          </a>
+        </div>
+
+        <!-- Hamburger Menu Button (Mobile & Tablet) -->
+        <button class="lg:hidden text-white flex-shrink-0 animate-fade-in" id="mobile-menu-btn" aria-label="Toggle menu"> 
+          <i data-lucide="menu" class="w-8 h-8"></i> 
+        </button>
+      </div>
+
+      <!-- Navigation Center (Desktop Only) -->
+      <div class="hidden lg:flex items-center justify-center flex-1 px-12 animate-fade-in">
+        <nav class="flex space-x-10">
+          <a class="nav-link active" data-page="home" href="#home-page">Home</a> 
+          <a class="nav-link" data-page="about" href="#about-page">About</a> 
+          <a class="nav-link" data-page="practices" href="#practices-page">Practices</a> 
+          <a class="nav-link" data-page="insights" href="#insights-page">Insights</a>
+          <a class="nav-link" data-page="contact" href="#contact-page">Contact </a>
+        </nav>
+      </div>
+
+      <!-- Button Right (Desktop only, avoid duplication on md) -->
+      <div class="hidden lg:flex flex-shrink-0 animate-fade-in">
+        <a href="#contact-page" class="cta-button hover:scale-105 transition-all duration-300">
+          <span class="hidden lg:inline">Schedule Consultation</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu (Hidden by default, shown when hamburger is clicked) -->
+      <div id="mobile-nav-menu" class="hidden lg:hidden w-full mt-6 pt-6 pb-4 px-4 border-t border-white/10 bg-gradient-to-b from-white/5 to-white/[0.02] rounded-lg">
+        <nav class="flex flex-col space-y-4 items-center">
+          <a class="nav-link block" data-page="home" href="#home-page">HOME</a> 
+          <a class="nav-link block" data-page="about" href="#about-page">ABOUT</a> 
+          <a class="nav-link block" data-page="practices" href="#practices-page">PRACTICES</a> 
+          <a class="nav-link block" data-page="insights" href="#insights-page">INSIGHTS</a>
+          <a class="nav-link block" data-page="contact" href="#contact-page">CONTACT</a>
+        </nav>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Explore Framework Modal -->
+<div id="framework-modal" class="modal">
+  <div class="modal-content large framework-modal-content">
+    <button id="close-framework-modal" class="modal-close" aria-label="Close">×</button>
+    <h2 style="margin-bottom: 1rem; color: #fff;" class="framework-title">Our Specialized Practices</h2>
+    <div class="framework-grid">
+      <div class="framework-card">
+        <h3>Axios People</h3>
+        <p>HUMAN CAPITAL — Designing governance-driven systems aligning strategy, structure, and performance for sustainable growth.</p>
+      </div>
+      <div class="framework-card">
+        <h3>Axios Systems</h3>
+        <p>DIGITAL PLATFORMS — Tech platforms including HRIS and digital solutions for organizational excellence.</p>
+      </div>
+      <div class="framework-card">
+        <h3>Axios XR</h3>
+        <p>IMMERSIVE TECH — VR/AR training and simulation to enhance organizational learning.</p>
+      </div>
+      <div class="framework-card">
+        <h3>Axios Agro</h3>
+        <p>AGRICULTURAL INNOVATION — Tech-enabled agriculture for sustainable productivity.</p>
+      </div>
+      <div class="framework-card">
+        <h3>Axios Mobility</h3>
+        <p>TRANSPORT SYSTEMS — Mobility and logistics solutions that optimize infrastructure.</p>
+      </div>
+    </div>
+    <button id="close-framework-modal-2" class="cta-button" style="margin-top:1rem;">Close</button>
+  </div>
+</div>
+
+<!-- Schedule Now Modal -->
+<div id="schedule-modal" class="modal">
+  <div class="modal-content large">
+    <button id="close-schedule-modal" class="modal-close" aria-label="Close">×</button>
+    <h2 style="margin-bottom:.8rem; color:#fff;">Schedule Now</h2>
+    <p style="color:#ccc;">Ready. Set. Access the scheduling experience now. You will be redirected to the contact section for details.</p>
+    <button id="confirm-schedule" class="cta-button" style="margin-top:1rem;">Open Contact</button>
+  </div>
+</div>
+
+<!-- Transmission Confirmation Modal -->
+<div id="transmission-modal" class="modal">
+  <div class="modal-content large">
+    <button id="close-transmission-modal" class="modal-close" aria-label="Close">×</button>
+    <h2 style="margin-bottom:.8rem; color:#fff;">Transmission Initialized</h2>
+    <p style="color:#ccc;">Your request has been received. Expect a response in 24 hours.</p>
+    <button id="confirm-transmission" class="cta-button" style="margin-top:1rem;">Got It</button>
+  </div>
+</div>
+
+<style>
+  /* Base Glass Styles */
+  .glass-container {
+    background: rgba(10, 10, 10, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Shrink Effect on Scroll */
+  nav.scrolled {
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  nav.scrolled .glass-container {
+    height: 80px !important;
+    background: rgba(10, 10, 10, 0.9);
+    border-radius: 0; /* Goes full-width or sharp when scrolled */
+    margin: 0 -3rem; /* Expands to edges when scrolling */
+  }
+
+  /* Typography */
+  .nav-link {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: #C9A24A;
+    text-shadow: 0 0 15px rgba(201, 162, 74, 0.4);
+    transform: translateY(-2px);
+    letter-spacing: 0.25em;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #F5E3A6 0%, #C9A24A 45%, #8A6D2D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 8px rgba(201, 162, 74, 0.6));
+  }
+
+  /* Futuristic Button */
+  .cta-button {
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid #C9A24A;
+    color: #C9A24A;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-radius: 4px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .cta-button.mobile-small {
+    padding: 6px 12px;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+  }
+
+  .cta-button:hover {
+    background: #C9A24A;
+    color: #121212;
+    box-shadow: 0 0 30px rgba(201, 162, 74, 0.4), 0 0 60px rgba(201, 162, 74, 0.2);
+    transform: translateY(-3px) scale(1.02);
+  }
+
+  /* Enhanced Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(201, 162, 74, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(201, 162, 74, 0.6);
+    }
+  }
+
+  @keyframes float-nav {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float-nav 3s ease-in-out infinite;
+  }
+
+  #logo-link {
+    animation: slideInLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  #mobile-menu-btn {
+    transition: all 0.3s ease;
+  }
+
+  #mobile-menu-btn:hover {
+    transform: rotate(90deg) scale(1.1);
+    color: #C9A24A;
+    text-shadow: 0 0 10px rgba(201, 162, 74, 0.5);
+  }
+
+  #mobile-nav-menu {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  #mobile-nav-menu nav .nav-link:nth-child(1) {
+    animation: slideInLeft 0.3s ease-out;
+  }
+
+  #mobile-nav-menu nav .nav-link:nth-child(2) {
+    animation: slideInLeft 0.4s ease-out;
+  }
+
+  #mobile-nav-menu nav .nav-link:nth-child(3) {
+    animation: slideInLeft 0.5s ease-out;
+  }
+
+  #mobile-nav-menu nav .nav-link:nth-child(4) {
+    animation: slideInLeft 0.6s ease-out;
+  }
+
+  #mobile-nav-menu nav .nav-link:nth-child(5) {
+    animation: slideInLeft 0.7s ease-out;
+  }
+
+  #mobile-nav-menu nav .nav-link:nth-child(6) {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .nav-link {
+    position: relative;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #C9A24A;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::before,
+  .nav-link.active::before {
+    width: 100%;
+  }
+</style>
+
+<script>
+  // Script to handle the "Stunning" scroll transition
+  window.addEventListener('scroll', function() {
+    const nav = document.getElementById('main-nav');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // Navigation script
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileNavMenu = document.getElementById('mobile-nav-menu');
+  
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', function() {
+      if (mobileNavMenu) {
+        mobileNavMenu.classList.toggle('hidden');
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pageSections = document.querySelectorAll('.page-section');
+
+    function showPage(pageId) {
+      // Hide all sections
+      pageSections.forEach(section => {
+        section.classList.remove('active');
+      });
+      // Show the target section
+      const targetSection = document.getElementById(pageId + '-page');
+      if (targetSection) {
+        targetSection.classList.add('active');
+      }
+      if (pageId === 'about' && !countersStarted) {
+        countersStarted = true;
+        const counterData = [
+          { id: 'counter-practices', target: 89 },
+          { id: 'counter-orgs', target: 95 },
+          { id: 'counter-expertise', target: 72 },
+          { id: 'counter-industries', target: 63 }
+        ];
+        const animateCounter = (el, end, duration = 1000) => {
+          let start = 0;
+          let startTime = null;
+          const step = currentTime => {
+            if (!startTime) startTime = currentTime;
+            const progress = Math.min((currentTime - startTime) / duration, 1);
+            const value = Math.floor(start + progress * (end - start));
+            el.textContent = value;
+            if (progress < 1) {
+              requestAnimationFrame(step);
+            } else {
+              el.textContent = end;
+            }
+          };
+          requestAnimationFrame(step);
+        };
+        counterData.forEach(item => {
+          const el = document.getElementById(item.id);
+          if (el) animateCounter(el, item.target);
+        });
+      }
+      // Update active nav link
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-page') === pageId) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    // Handle nav link clicks
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const page = this.getAttribute('data-page');
+        if (page) {
+          const targetSection = document.getElementById(page + '-page');
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+          showPage(page);
+          window.location.hash = page + '-page';
+          // Close mobile menu after clicking
+          if (mobileNavMenu && !mobileNavMenu.classList.contains('hidden')) {
+            mobileNavMenu.classList.add('hidden');
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href').substring(1);
+        const section = document.getElementById(targetId);
+        if (section) {
+          e.preventDefault();
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          const page = targetId.replace('-page', '');
+          showPage(page);
+          window.location.hash = targetId;
+        }
+      });
+    });
+
+    const logoLink = document.getElementById('logo-link');
+    if (logoLink) {
+      logoLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        showPage('home');
+        const homeSection = document.getElementById('home-page');
+        if (homeSection) homeSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.location.hash = 'home-page';
+      });
+    }
+
+    // Handle initial load with hash
+    if (window.location.hash) {
+      const page = window.location.hash.substring(1).replace('-page', '');
+      showPage(page);
+    }
+    
+    // Lucide icons initialization
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+
+    // Handle hash change
+    window.addEventListener('hashchange', function() {
+      const page = window.location.hash.substring(1).replace('-page', '');
+      showPage(page);
+    });
+
+    // Explore Framework modal
+    const exploreBtn = document.getElementById('explore-btn');
+    const frameworkModal = document.getElementById('framework-modal');
+    const closeFrameworkModal = document.getElementById('close-framework-modal');
+    const closeFrameworkModal2 = document.getElementById('close-framework-modal-2');
+
+    function toggleFrameworkModal(open) {
+      frameworkModal.classList.toggle('show', open);
+    }
+
+    if (exploreBtn) exploreBtn.addEventListener('click', () => toggleFrameworkModal(true));
+    [closeFrameworkModal, closeFrameworkModal2].forEach(btn => {
+      if (btn) btn.addEventListener('click', () => toggleFrameworkModal(false));
+    });
+
+    if (frameworkModal) {
+      frameworkModal.addEventListener('click', (event) => {
+        if (event.target === frameworkModal) toggleFrameworkModal(false);
+      });
+    }
+
+    // Schedule/Contact shortcut function
+    const scheduleBtn = document.getElementById('schedule-btn');
+    const quickScheduleBtn = document.getElementById('quick-schedule');
+    const scheduleModal = document.getElementById('schedule-modal');
+    const closeScheduleModal = document.getElementById('close-schedule-modal');
+    const confirmSchedule = document.getElementById('confirm-schedule');
+    const contactLinks = document.querySelectorAll('.cta-button');
+    const transmissionModal = document.getElementById('transmission-modal');
+    const closeTransmissionModal = document.getElementById('close-transmission-modal');
+    const confirmTransmission = document.getElementById('confirm-transmission');
+
+    function goContact() {
+      showPage('contact');
+      window.location.hash = 'contact-page';
+    }
+
+    function toggleFrameworkModal(open) {
+      if (!frameworkModal) return;
+      frameworkModal.classList.toggle('show', open);
+      frameworkModal.classList.toggle('modal-show', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    function toggleScheduleModal(open) {
+      if (!scheduleModal) return;
+      scheduleModal.classList.toggle('show', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    function toggleTransmissionModal(open) {
+      if (transmissionModal) transmissionModal.classList.toggle('show', open);
+    }
+
+    if (scheduleBtn) scheduleBtn.addEventListener('click', () => toggleScheduleModal(true));
+    if (quickScheduleBtn) quickScheduleBtn.addEventListener('click', () => toggleScheduleModal(true));
+    if (closeScheduleModal) closeScheduleModal.addEventListener('click', () => toggleScheduleModal(false));
+    if (confirmSchedule) confirmSchedule.addEventListener('click', () => { toggleScheduleModal(false); goContact(); });
+
+    contactLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (link.getAttribute('href') === '#contact-page') {
+          e.preventDefault();
+          goContact();
+        }
+      });
+    });
+
+    if (scheduleModal) {
+      scheduleModal.addEventListener('click', (event) => {
+        if (event.target === scheduleModal) toggleScheduleModal(false);
+      });
+    }
+
+    if (transmissionModal) {
+      transmissionModal.addEventListener('click', (event) => {
+        if (event.target === transmissionModal) toggleTransmissionModal(false);
+      });
+    }
+
+    if (closeTransmissionModal) closeTransmissionModal.addEventListener('click', () => toggleTransmissionModal(false));
+    if (confirmTransmission) confirmTransmission.addEventListener('click', () => toggleTransmissionModal(false));
+
+    const themeToggle = document.getElementById('theme-toggle');
+    const rootBody = document.body;
+
+    function updateThemeUI(mode) {
+      if (mode === 'day') {
+        rootBody.classList.add('day-mode');
+        rootBody.classList.remove('dark-mode');
+        themeToggle.textContent = 'Dark Mode';
+      } else {
+        rootBody.classList.add('dark-mode');
+        rootBody.classList.remove('day-mode');
+        themeToggle.textContent = 'Day Mode';
+      }
+      localStorage.setItem('siteTheme', mode);
+    }
+
+    const savedTheme = localStorage.getItem('siteTheme') || 'dark';
+    updateThemeUI(savedTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const newTheme = rootBody.classList.contains('dark-mode') ? 'day' : 'dark';
+        updateThemeUI(newTheme);
+      });
+    }
+
+    // Contact Form
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('form-name').value.trim();
+        const email = document.getElementById('form-email').value.trim();
+        const org = document.getElementById('form-org').value.trim();
+        const message = document.getElementById('form-message').value.trim();
+
+        // Validate fields
+        if (!name || !email || !org || !message) {
+          return;
+        }
+
+        // Create mailto link with form data
+        const mailtoLink = `mailto:alvinchipmunk532?subject=Consultation Request from ${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nOrganization: ${org}\n\nMessage:\n${message}`)}`;
+        
+        window.open(mailtoLink);
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Show confirmation modal
+        toggleTransmissionModal(true);
+      });
+    }
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-trigger').forEach(el => observer.observe(el));
+
+    // Core values cards animation for iPad and smaller
+    const valuesItems = document.querySelectorAll('.values-item');
+    const valuesObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          valuesObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    valuesItems.forEach(item => valuesObserver.observe(item));
+
+  });
+</script>
+  </nav>
+  <!-- HOME PAGE --><div class="page-section active" id="home-page" style="scroll-margin-top: 140px;">
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]" style="padding: 120px 20px;">
+    
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="Images/loGO.png" 
+        alt="" 
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] opacity-10 blur-2xl animate-pulse-slow"
+      >
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201, 162, 74, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 74, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #0A0A0A 80%);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto text-center">
+      <div class="inline-block mb-6 px-4 py-1 border border-[#C9A24A]/30 rounded-full bg-[#C9A24A]/5 anim-reveal-down">
+        <span class="text-[10px] font-black uppercase tracking-[0.4em] gold-gradient-text">Institutional Excellence</span>
+      </div>
+
+      <h1 class="font-heading text-6xl md:text-8xl mb-8 leading-[1.1] tracking-tight text-white anim-hero-text">
+        Building <span class="gold-gradient-text">Governance</span><br>
+        Driven Organizations
+      </h1>
+
+      <p class="max-w-2xl mx-auto text-lg md:text-xl mb-12 text-gray-400 font-light leading-relaxed anim-fade-up delay-1">
+        Axios Unlimited pioneers the intersection of <span class="text-white font-medium">Spatial Computing</span> and 
+        <span class="text-white font-medium">Strategic HR</span> to build the institutions of tomorrow.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-6 justify-center items-center anim-fade-up delay-2">
+        <button class="hero-btn-primary" id="schedule-btn">
+          <span>Schedule Consultation</span>
+          <div class="btn-glow"></div>
+        </button>
+        
+        <button class="hero-btn-secondary" id="explore-btn">
+          Explore Framework
+        </button>
+      </div>
+    </div>
+
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center opacity-30 anim-float-up-down">
+      <span class="text-[9px] uppercase tracking-[0.3em] mb-2">Scroll to Explore</span>
+      <div class="w-[1px] h-12 bg-gradient-to-b from-[#C9A24A] to-transparent"></div>
+    </div>
+  </section>
+</div>
+
+<style>
+  /* Extra Animations */
+  @keyframes pulse-slow {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.08; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.15; }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 10s infinite ease-in-out;
+  }
+
+  /* Cinematic Text Reveal */
+  .anim-hero-text {
+    opacity: 0;
+    transform: translateY(50px);
+    filter: blur(15px);
+    animation: heroReveal 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes heroReveal {
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+  }
+
+  /* Futuristic Buttons */
+  .hero-btn-primary {
+    position: relative;
+    padding: 18px 40px;
+    background: #C9A24A;
+    color: #0A0A0A;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+
+  .hero-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(201, 162, 74, 0.4);
+  }
+
+  .btn-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(201,162,74,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: inherit;
+  }
+
+  .hero-btn-primary:hover .btn-glow {
+    opacity: 1;
+  }
+
+  .hero-btn-secondary {
+    padding: 18px 40px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .hero-btn-secondary:hover {
+    background: white;
+    color: black;
+    transform: translateY(-3px);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #F5E3A6 0%, #C9A24A 45%, #8A6D2D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 1000px 100%;
+    animation: shimmer 3s infinite linear;
+  }
+</style>
+   </section><!-- About Snapshot --><section class="relative overflow-hidden bg-[#0A0A0A] py-32 border-b border-white/5 animate-gradient-bg">
+  
+  <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-[#C9A24A]/5 to-transparent"></div>
+  <div class="absolute bottom-0 left-0 w-64 h-64 bg-[#C9A24A]/10 blur-[120px] rounded-full"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8 anim-reveal-up">
+      <div class="max-w-2xl">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="w-12 h-[1px] bg-[#C9A24A]"></div>
+          <span class="text-[10px] font-black uppercase tracking-[0.5em] gold-gradient-text">Institutional Architecture</span>
+        </div>
+        <h2 class="font-heading text-5xl md:text-7xl text-white leading-tight">
+          The <span class="gold-gradient-text">Axios</span> Legacy
+        </h2>
+      </div>
+      <div class="hidden md:block h-[1px] flex-grow mx-12 bg-white/10 mb-6 relative">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-[#C9A24A] shadow-[0_0_10px_#C9A24A]"></div>
+      </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-16 items-start">
+      
+      <div class="lg:col-span-5 space-y-8 anim-fade-up delay-1">
+        <p class="text-xl md:text-2xl leading-relaxed text-gray-200 font-light">
+          Axios Unlimited is a premier enterprise focused on the <span class="text-[#C9A24A] font-medium">architecture of progress</span>—bridging human capital and technological innovation.
+        </p>
+        <div class="space-y-6 text-gray-400 leading-loose border-l-2 border-[#C9A24A]/20 pl-8">
+          <p>
+            Registered in Zimbabwe and operating globally, we design governance-driven ecosystems that enable institutions to achieve sovereign performance and market scalability.
+          </p>
+          <p>
+            Our methodology integrates <span class="text-white">Spatial Intelligence</span> with <span class="text-white">Structured Governance</span> to solve complex organizational challenges.
+          </p>
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 anim-fade-up delay-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          
+          <div class="group stat-card-futuristic">
+            <div class="relative z-10">
+              <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-2 group-hover:text-[#C9A24A] transition-colors">Specialized Units</div>
+              <div class="flex items-baseline space-x-2">
+                <span class="counter-box text-6xl font-black text-white group-hover:gold-gradient-text transition-all duration-500" id="counter-practices">0</span>
+                <span class="text-[#C9A24A] text-2xl">+</span>
+              </div>
+              <div class="h-[1px] w-full bg-white/5 mt-4 group-hover:bg-[#C9A24A]/30 transition-all"></div>
+              <p class="text-sm text-gray-400 mt-4 group-hover:text-gray-200">Core Practices</p>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <div class="group stat-card-futuristic">
+            <div class="relative z-10">
+              <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-2 group-hover:text-[#C9A24A] transition-colors">Global Impact</div>
+              <div class="flex items-baseline space-x-2">
+                <span class="counter-box text-6xl font-black text-white group-hover:gold-gradient-text transition-all duration-500" id="counter-orgs">0</span>
+                <span class="text-[#C9A24A] text-2xl">+</span>
+              </div>
+              <div class="h-[1px] w-full bg-white/5 mt-4 group-hover:bg-[#C9A24A]/30 transition-all"></div>
+              <p class="text-sm text-gray-400 mt-4 group-hover:text-gray-200">Institutions Served</p>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <div class="group stat-card-futuristic">
+            <div class="relative z-10">
+              <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-2 group-hover:text-[#C9A24A] transition-colors">Expert Network</div>
+              <div class="flex items-baseline space-x-2">
+                <span class="counter-box text-6xl font-black text-white group-hover:gold-gradient-text transition-all duration-500" id="counter-expertise">0</span>
+                <span class="text-[#C9A24A] text-2xl">+</span>
+              </div>
+              <div class="h-[1px] w-full bg-white/5 mt-4 group-hover:bg-[#C9A24A]/30 transition-all"></div>
+              <p class="text-sm text-gray-400 mt-4 group-hover:text-gray-200">Specialist Teams</p>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+          <div class="group stat-card-futuristic">
+            <div class="relative z-10">
+              <div class="text-[10px] uppercase tracking-[0.3em] text-gray-500 mb-2 group-hover:text-[#C9A24A] transition-colors">Strategic Scope</div>
+              <div class="flex items-baseline space-x-2">
+                <span class="counter-box text-6xl font-black text-white group-hover:gold-gradient-text transition-all duration-500" id="counter-industries">0</span>
+                <span class="text-[#C9A24A] text-2xl">+</span>
+              </div>
+              <div class="h-[1px] w-full bg-white/5 mt-4 group-hover:bg-[#C9A24A]/30 transition-all"></div>
+              <p class="text-sm text-gray-400 mt-4 group-hover:text-gray-200">Industry Sectors</p>
+            </div>
+            <div class="card-glow"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Futuristic Stat Cards */
+  .stat-card-futuristic {
+    position: relative;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px; /* Sharp corporate edges */
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .stat-card-futuristic:hover {
+    background: rgba(201, 162, 74, 0.03);
+    border-color: rgba(201, 162, 74, 0.3);
+    transform: translateY(-10px);
+  }
+
+  .card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top right, rgba(201, 162, 74, 0.1), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .stat-card-futuristic:hover .card-glow {
+    opacity: 1;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #F5E3A6 0%, #C9A24A 45%, #8A6D2D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+   </section><!-- Our Practices Preview --><section class="relative bg-[#0A0A0A] py-32 px-6 overflow-hidden">
+  
+  <div class="absolute top-20 left-10 text-[15rem] font-black text-white/[0.02] select-none pointer-events-none">
+    PRACTICES
+  </div>
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <div class="mb-20 anim-reveal-up">
+      <div class="flex items-center space-x-4 mb-4">
+        <div class="w-12 h-[1px] bg-[#C9A24A]"></div>
+        <span class="text-[10px] font-black uppercase tracking-[0.5em] gold-gradient-text">Core Ecosystem</span>
+      </div>
+      <h2 class="font-heading text-5xl md:text-6xl text-white mb-6">Specialized <span class="gold-gradient-text">Practices</span></h2>
+      <p class="text-gray-400 max-w-2xl text-lg font-light leading-relaxed">
+        Axios Unlimited operates through integrated units focused on the architecture of human potential and the deployment of frontier technologies.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="practice-card-futuristic group anim-fade-up delay-1">
+        <div class="card-image-header">
+          <img src="Images/People.png" alt="Axios People" class="group-hover:scale-110 transition-transform duration-700">
+          <div class="card-overlay"></div>
+        </div>
+        <div class="p-8 relative">
+          <div class="card-icon-box">
+            <i data-lucide="users" class="w-6 h-6 text-white"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-[#C9A24A] transition-colors">Axios People</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Architecting human capital through governance-driven workforce systems and strategic institutional design.
+          </p>
+          <ul class="text-sm text-gray-300 leading-relaxed mb-4 list-disc list-inside space-y-2">
+            <li>Governance blueprints for leadership, talent pipelines, and performance architecture.</li>
+            <li>Culture engineering with high-impact capability development frameworks.</li>
+            <li>Data-driven people analytics, succession planning, and compliance orchestration.</li>
+          </ul>
+          <div class="flex items-center text-[10px] font-bold tracking-widest text-[#C9A24A] uppercase opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+            Learn More <i data-lucide="arrow-right" class="ml-2 w-3 h-3"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="practice-card-futuristic group anim-fade-up delay-2">
+        <div class="card-image-header">
+          <img src="Images/Systems.png" alt="Axios Systems" class="group-hover:scale-110 transition-transform duration-700">
+          <div class="card-overlay"></div>
+        </div>
+        <div class="p-8 relative">
+          <div class="card-icon-box">
+            <i data-lucide="cpu" class="w-6 h-6 text-white"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-[#C9A24A] transition-colors">Axios Systems</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Integration of advanced HRIS solutions, digital infrastructure, and data-driven management platforms.
+          </p>
+          <ul class="text-sm text-gray-300 leading-relaxed mb-4 list-disc list-inside space-y-2">
+            <li>Platform architecture from ERP and cloud-native systems to AI-enabled workforce insights.</li>
+            <li>Secure integration, automation pipelines, and real-time analytics for decision velocity.</li>
+            <li>Scalable frameworks for enterprise-grade digital transformation and compliance.</li>
+          </ul>
+          <div class="flex items-center text-[10px] font-bold tracking-widest text-[#C9A24A] uppercase opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+            Learn More <i data-lucide="arrow-right" class="ml-2 w-3 h-3"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="practice-card-futuristic group anim-fade-up delay-3">
+        <div class="card-image-header">
+          <img src="Images/AxiosXR.png" alt="Axios XR" class="group-hover:scale-110 transition-transform duration-700">
+          <div class="card-overlay"></div>
+        </div>
+        <div class="p-8 relative">
+          <div class="card-icon-box">
+            <i data-lucide="layers" class="w-6 h-6 text-white"></i>
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-[#C9A24A] transition-colors">Axios XR</h3>
+          <p class="text-gray-400 text-sm leading-relaxed mb-6">
+            Frontier development in Extended Reality (XR), delivering immersive VR training and AR architectural solutions.
+          </p>
+          <ul class="text-sm text-gray-300 leading-relaxed mb-4 list-disc list-inside space-y-2">
+            <li>Immersive simulation design for training, scenario planning, and organizational readiness.</li>
+            <li>AR/VR interface engineering for collaboration, remote capability, and executive decision support.</li>
+            <li>Spatial computing to drive engagement, change management, and skills transfer outcomes.</li>
+          </ul>
+          <div class="flex items-center text-[10px] font-bold tracking-widest text-[#C9A24A] uppercase opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+            Learn More <i data-lucide="arrow-right" class="ml-2 w-3 h-3"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .practice-card-futuristic {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .practice-card-futuristic:hover {
+    transform: translateY(-15px);
+    border-color: rgba(201, 162, 74, 0.4);
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.7);
+  }
+
+  .card-image-header {
+    width: 100%;
+    height: 180px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image-header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(40%) contrast(110%);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 0%, #0A0A0A 100%);
+  }
+
+  .card-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #C9A24A;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -55px;
+    position: relative;
+    z-index: 20;
+    box-shadow: 0 10px 20px rgba(201, 162, 74, 0.3);
+    transition: transform 0.3s ease;
+  }
+
+  .practice-card-futuristic:hover .card-icon-box {
+    transform: scale(1.1) rotate(5deg);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #F5E3A6 0%, #C9A24A 45%, #8A6D2D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+    
+   <!-- CTA Section -->
+  
+  </div><!-- ABOUT PAGE -->
+  <div class="page-section" id="about-page" style="scroll-margin-top: 140px;">
+   <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]" style="padding: 120px 20px;">
+    
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="Images/loGO.png" 
+        alt="" 
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] opacity-10 blur-2xl animate-pulse-slow"
+      >
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201, 162, 74, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 74, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #0A0A0A 80%);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto">
+     <h1 class="font-heading text-5xl mb-8 text-white anim-fade-up">About Axios Unlimited</h1>
+     <div class="anim-fade-up delay-1" style="margin-bottom: 60px;">
+      <h2 class="font-heading text-3xl mb-6 text-white">Company Overview</h2>
+      <p style="font-size: 18px; line-height: 1.8; color: #ccc; margin-bottom: 20px;">Axios Unlimited Private Limited is a Zimbabwe-based multi-industry enterprise focused on developing people, fostering innovation through technology-based solutions, and delivering sustainable services across multiple sectors.</p>
+      <p style="font-size: 18px; line-height: 1.8; color: #ccc;">The company operates at the intersection of institutional development, human capital architecture, and digital innovation. Our approach ensures that every solution we deliver is grounded in governance best practices and aligned with sustainable growth principles.</p>
+     </div>
+     <div class="grid md:grid-cols-2 gap-12">
+      <div class="anim-fade-up delay-2">
+       <h2 class="font-heading text-3xl mb-6 text-white">Vision</h2>
+       <p style="font-size: 16px; line-height: 1.8; color: #ccc; padding: 24px; background: rgba(201, 162, 74, 0.1); border-radius: 8px; border-left: 4px solid #C9A24A;">To become a leading African institutional architecture and innovation enterprise that develops people, strengthens institutions, and delivers technology-driven solutions for sustainable impact.</p>
+      </div>
+      <div class="anim-fade-up delay-3">
+       <h2 class="font-heading text-3xl mb-6 text-white">Mission</h2>
+       <p style="font-size: 16px; line-height: 1.8; color: #ccc; padding: 24px; background: rgba(201, 162, 74, 0.1); border-radius: 8px; border-left: 4px solid #C9A24A;">To design and implement governance-driven systems that empower organizations, strengthen institutions, and drive sustainable development across Africa.</p>
+      </div>
+     </div>
+     <div class="anim-fade-up delay-4" style="margin-top: 60px;">
+      <h2 class="font-heading text-3xl mb-8 text-white">Core Values</h2>
+      <div class="grid lg:grid-cols-5 gap-4 values-grid">
+       <div class="values-item">
+        <p class="font-heading text-lg">Integrity</p>
+       </div>
+       <div class="values-item">
+        <p class="font-heading text-lg">Excellence</p>
+       </div>
+       <div class="values-item">
+        <p class="font-heading text-lg">Innovation</p>
+       </div>
+       <div class="values-item">
+        <p class="font-heading text-lg">Sustainability</p>
+       </div>
+       <div class="values-item">
+        <p class="font-heading text-lg">Collaboration</p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- OUR PRACTICES PAGE -->
+  <div class="page-section" id="practices-page" style="scroll-margin-top: 140px;">
+   <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]" style="padding: 120px 20px;">
+    
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="Images/loGO.png" 
+        alt="" 
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] opacity-10 blur-2xl animate-pulse-slow"
+      >
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201, 162, 74, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 74, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #0A0A0A 80%);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+     <h1 class="font-heading text-5xl mb-8 text-white anim-fade-up">Our Specialized Practices</h1>
+     <p style="font-size: 17px; line-height: 1.9; color: #ccc; margin-bottom: 24px;" class="anim-fade-up delay-1">Axios Unlimited delivers its work through specialized practices focused on institutional development and innovation.</p>
+     <div class="space-y-8">
+      <div class="bg-gray-800 border-l-4 border-yellow-600 p-8 rounded-lg anim-fade-up delay-2" style="border-left-color: #C9A24A;">
+       <div class="flex items-start gap-6">
+        <div style="width: 60px; height: 60px; background: #C9A24A; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+         <i data-lucide="users" style="width: 32px; height: 32px; color: white;"></i>
+        </div>
+        <div>
+         <h2 class="font-heading text-2xl mb-3 text-white">Axios People - Human Capital Architecture</h2>
+         <p style="font-size: 17px; line-height: 1.9; color: #ccc; margin-bottom: 16px; font-weight: 500;">The advisory practice focused on governance-driven workforce systems. We design organizational structures, governance frameworks, and performance systems that align with strategic objectives.</p>
+         <p style="font-size: 15px; color: #aaa; line-height: 1.8;">Services: HR Governance Architecture, Organizational Design, Performance Management Systems, Workforce Planning &amp; Succession, HR Digital Transformation, HRIS Implementation</p>
+        </div>
+       </div>
+      </div>
+      <div class="bg-gray-800 border-l-4 border-yellow-600 p-8 rounded-lg anim-fade-up delay-3" style="border-left-color: #C9A24A;">
+       <div class="flex items-start gap-6">
+        <div style="width: 60px; height: 60px; background: #C9A24A; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+         <i data-lucide="cpu" style="width: 32px; height: 32px; color: white;"></i>
+        </div>
+        <div>
+         <h2 class="font-heading text-2xl mb-3 text-white">Axios Systems - Digital Platforms &amp; Technology</h2>
+         <p style="font-size: 17px; line-height: 1.9; color: #ccc; margin-bottom: 16px; font-weight: 500;">Development of technology platforms including HRIS systems and digital solutions. We build scalable, secure systems that enable organizational excellence.</p>
+         <p style="font-size: 15px; color: #aaa; line-height: 1.8;">Services: HRIS Development, Workforce Analytics Platforms, Digital Transformation, System Integration</p>
+        </div>
+       </div>
+      </div>
+      <div class="bg-gray-800 border-l-4 border-yellow-600 p-8 rounded-lg anim-fade-up delay-4" style="border-left-color: #C9A24A;">
+       <div class="flex items-start gap-6">
+        <div style="width: 60px; height: 60px; background: #C9A24A; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+         <i data-lucide="headphones" style="width: 32px; height: 32px; color: white;"></i>
+        </div>
+        <div>
+         <h2 class="font-heading text-2xl mb-3 text-white">Axios XR - Immersive Technology</h2>
+         <p style="font-size: 17px; line-height: 1.9; color: #ccc; margin-bottom: 16px; font-weight: 500;">Virtual and augmented reality solutions for training and simulation. We leverage cutting-edge immersive technology to enhance learning and organizational performance.</p>
+         <p style="font-size: 15px; color: #aaa; line-height: 1.8;">Services: VR Training Simulations, AR Solutions, Immersive Learning Platforms</p>
+        </div>
+       </div>
+       </div>
+    
+        
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- AXIOS PEOPLE PAGE -->
+  <div class="page-section" id="people-page" style="scroll-margin-top: 140px;">
+   <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]" style="padding: 120px 20px;">
+    
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="Images/loGO.png" 
+        alt="" 
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] opacity-10 blur-2xl animate-pulse-slow"
+      >
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201, 162, 74, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 74, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #0A0A0A 80%);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+     <h1 class="font-heading text-5xl mb-8 text-white anim-fade-up">Axios People - Human Capital Architecture</h1>
+     <div class="grid md:grid-cols-2 gap-12 mb-16">
+      <div class="anim-fade-up delay-1">
+       <p style="font-size: 18px; line-height: 1.9; color: #ccc; margin-bottom: 20px; font-weight: 500;">Axios People is the human capital advisory practice of Axios Unlimited. It focuses on designing governance-driven workforce systems that align organizational strategy, structure, and performance.</p>
+       <p style="font-size: 18px; line-height: 1.9; color: #ccc; font-weight: 500;">We help organizations build sustainable human capital systems that scale with growth and adapt to market changes.</p>
+      </div>
+      <div style="background: rgba(201, 162, 74, 0.1); padding: 32px; border-radius: 8px; anim-fade-up delay-2;" class="anim-fade-up delay-2">
+       <h3 class="font-heading text-2xl mb-6 text-white">Why Choose Axios People?</h3>
+       <ul style="space-y: 12px;">
+        <li style="margin-bottom: 12px; display: flex; gap: 12px; animation: slideInLeft 0.6s ease-out 0.2s forwards; opacity: 0;" class="benefit-item"><i data-lucide="check" style="width: 20px; height: 20px; color: #C9A24A; flex-shrink: 0; margin-top: 2px;"></i> <span style="color: #ccc; font-size: 15px;">Governance-driven approach</span></li>
+        <li style="margin-bottom: 12px; display: flex; gap: 12px; animation: slideInLeft 0.6s ease-out 0.3s forwards; opacity: 0;" class="benefit-item"><i data-lucide="check" style="width: 20px; height: 20px; color: #C9A24A; flex-shrink: 0; margin-top: 2px;"></i> <span style="color: #ccc; font-size: 15px;">Industry expertise</span></li>
+        <li style="margin-bottom: 12px; display: flex; gap: 12px; animation: slideInLeft 0.6s ease-out 0.4s forwards; opacity: 0;" class="benefit-item"><i data-lucide="check" style="width: 20px; height: 20px; color: #C9A24A; flex-shrink: 0; margin-top: 2px;"></i> <span style="color: #ccc; font-size: 15px;">Proven frameworks</span></li>
+        <li style="display: flex; gap: 12px; animation: slideInLeft 0.6s ease-out 0.5s forwards; opacity: 0;" class="benefit-item"><i data-lucide="check" style="width: 20px; height: 20px; color: #C9A24A; flex-shrink: 0; margin-top: 2px;"></i> <span style="color: #ccc; font-size: 15px;">Sustainable implementation</span></li>
+       </ul>
+      </div>
+     </div>
+     <h2 class="font-heading text-4xl mb-12 text-white anim-fade-up delay-3">Our Services</h2>
+     <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-gray-800 p-6 rounded-lg anim-fade-up delay-4">
+       <h3 class="font-heading text-xl mb-3 text-white">HR Governance Architecture</h3>
+       <p style="color: #ccc; line-height: 1.6; margin-bottom: 12px; font-size: 15px;">Design of policy frameworks, compliance systems, and governance structures that ensure organizational integrity and regulatory compliance.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg anim-fade-up delay-4">
+       <h3 class="font-heading text-xl mb-3 text-white">Organizational Design</h3>
+       <p style="color: #ccc; line-height: 1.6; margin-bottom: 12px; font-size: 15px;">Development of clear reporting structures and institutional frameworks that support organizational objectives and employee clarity.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg anim-fade-up delay-5">
+       <h3 class="font-heading text-xl mb-3 text-white">Performance Management Systems</h3>
+       <p style="color: #ccc; line-height: 1.6; margin-bottom: 12px; font-size: 15px;">Design of structured performance systems aligned with strategic goals, enabling continuous employee development and organizational excellence.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg anim-fade-up delay-5">
+       <h3 class="font-heading text-xl mb-3 text-white">Workforce Planning &amp; Succession</h3>
+       <p style="color: #ccc; line-height: 1.6; margin-bottom: 12px; font-size: 15px;">Building leadership pipelines and long-term workforce strategies that ensure organizational continuity and leadership excellence.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg anim-fade-up delay-5">
+       <h3 class="font-heading text-xl mb-3 text-white">HR Digital Transformation</h3>
+       <p style="color: #ccc; line-height: 1.6; margin-bottom: 12px; font-size: 15px;">Supporting organizations in transitioning to modern digital HR systems that enhance efficiency, data analytics, and decision-making.</p>
+      </div>
+      <div class="bg-gray-800 p-6 rounded-lg anim-fade-up delay-5">
+       <h3 class="font-heading text-xl mb-3 text-white">HRIS Implementation</h3>
+       <p style="color: #ccc; line-height: 1.6; margin-bottom: 12px; font-size: 15px;">Deployment and advisory for HR information systems including Axios Core HRIS and other leading platforms.</p>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- FRAMEWORK PAGE -->
+
+  </div><!-- INSIGHTS PAGE -->
+  <div class="page-section" id="insights-page" style="scroll-margin-top: 140px;">
+   <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A]" style="padding: 120px 20px;">
+    
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="Images/loGO.png" 
+        alt="" 
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] opacity-10 blur-2xl animate-pulse-slow"
+      >
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201, 162, 74, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 74, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #0A0A0A 80%);"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+     <h1 class="font-heading text-5xl mb-8 text-white anim-fade-up">Axios Insights</h1>
+     <p class="text-lg text-gray-400 mb-16 anim-fade-up delay-1">Thought leadership and research on institutional development and human capital.</p>
+     <div class="grid md:grid-cols-2 gap-12">
+      <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden anim-fade-up delay-2">
+       <div style="height: 240px; overflow:hidden;">
+         <img src="Images/Governance.png" alt="Governance" style="width:100%; height:100%; object-fit:cover;" />
+       </div>
+       <div style="padding: 32px;">
+        <p style="color: #C9A24A; font-weight: 600; margin-bottom: 12px; font-size: 14px;">GOVERNANCE</p>
+        <h3 class="font-heading text-2xl mb-4 text-white">Why Governance Matters in HR Systems</h3>
+        <p style="color: #ccc; line-height: 1.8; margin-bottom: 20px; font-size: 16px;">Explore how governance frameworks create accountability, clarity, and sustainable organizational performance through structured HR systems that drive excellence.</p><a href="#" style="color: #C9A24A; font-weight: 600; text-decoration: none; font-size: 16px;">Read More →</a>
+       </div>
+      </div>
+      <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden anim-fade-up delay-3">
+       <div style="height: 240px; overflow:hidden;">
+         <img src="Images/designing.png" alt="Designing Scalable Organizations" style="width:100%; height:100%; object-fit:cover;" />
+       </div>
+       <div style="padding: 32px;">
+        <p style="color: #C9A24A; font-weight: 600; margin-bottom: 12px; font-size: 14px;">ORGANIZATION</p>
+        <h3 class="font-heading text-2xl mb-4 text-white">Designing Scalable Organizations</h3>
+        <p style="color: #ccc; line-height: 1.8; margin-bottom: 20px; font-size: 16px;">Learn the principles of organizational design that enable sustainable growth and adaptability in dynamic business environments while maintaining cultural cohesion.</p><a href="#" style="color: #C9A24A; font-weight: 600; text-decoration: none; font-size: 16px;">Read More →</a>
+       </div>
+      </div>
+      <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden anim-fade-up delay-4">
+       <div style="height: 240px; overflow:hidden;">
+         <img src="Images/The future.png" alt="Future of Workforce Intelligence" style="width:100%; height:100%; object-fit:cover;" />
+       </div>
+       <div style="padding: 32px;">
+        <p style="color: #C9A24A; font-weight: 600; margin-bottom: 12px; font-size: 14px;">TECHNOLOGY</p>
+        <h3 class="font-heading text-2xl mb-4 text-white">The Future of Workforce Intelligence</h3>
+        <p style="color: #ccc; line-height: 1.8; margin-bottom: 20px; font-size: 16px;">Discover how advanced analytics and AI are transforming workforce planning and organizational decision-making for competitive advantage.</p><a href="#" style="color: #C9A24A; font-weight: 600; text-decoration: none; font-size: 16px;">Read More →</a>
+       </div>
+      </div>
+      <div class="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden anim-fade-up delay-5">
+       <div style="height: 240px; overflow:hidden;">
+         <img src="Images/Digital.png" alt="Digital Transformation in HR" style="width:100%; height:100%; object-fit:cover;" />
+       </div>
+       <div style="padding: 32px;">
+        <p style="color: #C9A24A; font-weight: 600; margin-bottom: 12px; font-size: 14px;">TRANSFORMATION</p>
+        <h3 class="font-heading text-2xl mb-4 text-white">Digital Transformation in HR</h3>
+        <p style="color: #ccc; line-height: 1.8; margin-bottom: 20px; font-size: 16px;">Strategies and best practices for successfully transitioning to modern digital HR systems and maximizing ROI on technology investments.</p><a href="#" style="color: #C9A24A; font-weight: 600; text-decoration: none; font-size: 16px;">Read More →</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+  </div><!-- CONTACT PAGE -->
+  <div class="page-section" id="contact-page" style="scroll-margin-top: 140px;">
+  <section class="relative bg-[#0A0A0A] py-32 px-6 overflow-hidden min-h-screen flex items-center">
+    
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="Images/loGO.png" 
+        alt="" 
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[60vh] opacity-10 blur-2xl animate-pulse-slow"
+      >
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(201, 162, 74, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 74, 0.05) 1px, transparent 1px); background-size: 50px 50px;"></div>
+      <div class="absolute inset-0" style="background: radial-gradient(circle at center, transparent 0%, #0A0A0A 80%);"></div>
+    </div>
+
+    <div class="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+      <div class="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#C9A24A]/10 blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-[#C9A24A]/5 blur-[100px] rounded-full"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto relative z-10 w-full">
+      <div class="mb-16 anim-reveal-up">
+        <div class="flex items-center space-x-4 mb-4">
+          <div class="w-12 h-[1px] bg-[#C9A24A]"></div>
+          <span class="text-[10px] font-black uppercase tracking-[0.5em] gold-gradient-text">Secure Channel</span>
+        </div>
+        <h1 class="font-heading text-5xl md:text-7xl text-white">Connect with <span class="gold-gradient-text">Axios</span></h1>
+      </div>
+
+      <div class="grid lg:grid-cols-12 gap-16">
+        
+        <div class="lg:col-span-7 anim-fade-up delay-1">
+          <form id="contact-form" class="glass-panel p-8 md:p-12 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C9A24A]/50 to-transparent"></div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+              <div class="input-group">
+                <label class="input-label">Identity</label>
+                <input type="text" id="form-name" placeholder="Full Name" required class="futuristic-input">
+              </div>
+              <div class="input-group">
+                <label class="input-label">Digital Address</label>
+                <input type="email" id="form-email" placeholder="email@domain.com" required class="futuristic-input">
+              </div>
+            </div>
+
+            <div class="input-group mb-8">
+              <label class="input-label">Institution</label>
+              <input type="text" id="form-org" placeholder="Organization Name" required class="futuristic-input">
+            </div>
+
+            <div class="input-group mb-10">
+              <label class="input-label">Project Brief</label>
+              <textarea id="form-message" placeholder="Describe your institutional needs..." rows="5" required class="futuristic-input resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="terminal-btn group">
+              <span class="relative z-10">Initialize Transmission</span>
+              <div class="btn-shimmer"></div>
+            </button>
+            
+            <p class="mt-6 text-[10px] uppercase tracking-[0.2em] text-gray-500 text-center">
+              Response Latency: &lt; 24 Hours
+            </p>
+          </form>
+        </div>
+
+        <div class="lg:col-span-5 space-y-6 anim-fade-up delay-2">
+          
+          <div class="mb-10">
+            <h2 class="text-2xl font-bold text-white mb-4">Institutional Reach</h2>
+            <p class="text-gray-400 font-light leading-relaxed">
+              Based in Zimbabwe, Axios Unlimited provides global solutions in institutional architecture and spatial computing.
+            </p>
+          </div>
+
+          <a href="mailto:alvinchipmunk532" class="contact-card-futuristic group">
+            <div class="icon-circle">
+              <i data-lucide="mail" class="w-5 h-5 text-[#C9A24A]"></i>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Direct Link</p>
+              <p class="text-white font-bold group-hover:text-[#C9A24A] transition-colors">alvinchipmunk532</p>
+            </div>
+          </a>
+
+          <a href="tel:+263772493099" class="contact-card-futuristic group">
+            <div class="icon-circle">
+              <i data-lucide="phone" class="w-5 h-5 text-[#C9A24A]"></i>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-gray-500 mb-1">Voice Channel</p>
+              <p class="text-white font-bold group-hover:text-[#C9A24A] transition-colors">+263 77 249 3099</p>
+            </div>
+          </a>
+
+          <div class="cta-terminal p-8 mt-12">
+            <h3 class="font-heading text-xl text-white mb-4">Strategic Consultation</h3>
+            <p class="text-gray-400 text-sm mb-6 leading-relaxed">Ready to architect the future of your organization?</p>
+            <button class="w-full py-4 bg-[#C9A24A] text-black font-black text-[10px] uppercase tracking-[0.3em] hover:bg-white transition-all duration-500" id="quick-schedule">
+              Schedule Now
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<style>
+  /* Futuristic Styles */
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+
+  .input-label {
+    display: block;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #C9A24A;
+    margin-bottom: 12px;
+    font-weight: 800;
+  }
+
+  .futuristic-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 0;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.4s ease;
+    border-radius: 0;
+  }
+
+  .futuristic-input:focus {
+    outline: none;
+    border-bottom-color: #C9A24A;
+    background: rgba(201, 162, 74, 0.05);
+    padding-left: 10px;
+  }
+
+  .terminal-btn {
+    width: 100%;
+    padding: 20px;
+    background: transparent;
+    border: 1px solid #C9A24A;
+    color: #C9A24A;
+    text-transform: uppercase;
+    font-weight: 800;
+    letter-spacing: 0.3em;
+    font-size: 11px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+
+  .terminal-btn:hover {
+    color: black;
+    background: #C9A24A;
+    box-shadow: 0 0 30px rgba(201, 162, 74, 0.4);
+  }
+
+  .contact-card-futuristic {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.4s;
+  }
+
+  .contact-card-futuristic:hover {
+    border-color: #C9A24A;
+    background: rgba(201, 162, 74, 0.05);
+    transform: translateX(10px);
+  }
+
+  .icon-circle {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(201, 162, 74, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(201, 162, 74, 0.05);
+  }
+
+  .cta-terminal {
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(10, 10, 10, 1) 100%);
+    border: 1px solid #C9A24A;
+    border-radius: 4px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #F5E3A6 0%, #C9A24A 45%, #8A6D2D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+  </div><!-- FOOTER --><footer class="relative bg-[#050505] pt-24 pb-12 overflow-hidden border-t border-white/5">
+  
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(#C9A24A 1px, transparent 1px); background-size: 40px 40px;"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10">
+    
+    <div class="grid lg:grid-cols-12 gap-16 mb-20">
+      
+      <div class="lg:col-span-4">
+        <div class="flex items-center space-x-4 mb-8 group cursor-pointer">
+          <img src="Images/loGO.png" alt="Axios Logo" class="h-10 w-auto logo-glow transition-transform duration-500 group-hover:rotate-[360deg]">
+          <div class="flex flex-col">
+            <span class="text-xl font-black tracking-[0.2em] text-white uppercase leading-none">Axios</span>
+            <span class="text-[9px] gold-gradient-text font-black uppercase tracking-[0.4em] mt-1">Unlimited</span>
+          </div>
+        </div>
+        <p class="text-gray-500 text-sm leading-relaxed max-w-sm mb-8 font-light">
+          Architecting governance-driven ecosystems through the fusion of human capital and spatial computing. Registered in Zimbabwe, operating at the frontier.
+        </p>
+        <div class="flex gap-4">
+          <a href="#" class="social-icon-terminal"><i data-lucide="linkedin"></i></a>
+          <a href="#" class="social-icon-terminal"><i data-lucide="twitter"></i></a>
+          <a href="#" class="social-icon-terminal"><i data-lucide="instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12">
+        <div>
+          <h4 class="footer-label">Specialized Units</h4>
+          <ul class="space-y-4">
+            <li><a href="#" class="footer-link">Axios People</a></li>
+            <li><a href="#" class="footer-link">Axios Systems</a></li>
+            <li><a href="#" class="footer-link">Axios XR</a></li>
+            <li><a href="#" class="footer-link">Axios Agro</a></li>
+            <li><a href="#" class="footer-link">Axios Mobility</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-label">Governance</h4>
+          <ul class="space-y-4">
+            <li><a href="#" class="footer-link">Our Framework</a></li>
+            <li><a href="#" class="footer-link">Strategic Insights</a></li>
+            <li><a href="#" class="footer-link">Institutional Lab</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="col-span-2 md:col-span-1">
+          <h4 class="footer-label">Direct Link</h4>
+          <div class="space-y-6">
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-gray-600 mb-1">Inquiries</p>
+              <a href="mailto:info@axiosunlimited.com" class="text-white hover:text-[#C9A24A] font-bold transition-colors">info@axiosunlimited.com</a>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-gray-600 mb-1">Voice</p>
+              <a href="tel:+263772493099" class="text-white hover:text-[#C9A24A] font-bold transition-colors">+263 77 249 3099</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative pt-12 border-t border-white/5">
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="absolute -top-[1px] right-0 translate-y-[-50%] bg-[#050505] px-4 py-2 border border-[#C9A24A]/30 flex items-center space-x-2 group">
+        <span class="text-[9px] font-black uppercase tracking-[0.3em] text-gray-500 group-hover:text-[#C9A24A]">System Reset</span>
+        <i data-lucide="arrow-up" class="w-3 h-3 text-[#C9A24A]"></i>
+      </button>
+
+      <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-600 font-medium">
+          © 2026 AXIOS UNLIMITED PRIVATE LIMITED. <span class="hidden md:inline mx-2 text-white/10">|</span> SOVEREIGN PERFORMANCE.
+        </p>
+        <div class="flex gap-8">
+          <a href="#" class="text-[10px] uppercase tracking-widest text-gray-600 hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="text-[10px] uppercase tracking-widest text-gray-600 hover:text-white transition-colors">Terms</a>
+          <a href="#" class="text-[10px] uppercase tracking-widest text-gray-600 hover:text-white transition-colors">Node Status</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer-label {
+    font-size: 10px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #C9A24A;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .footer-label::after {
+    content: '';
+    height: 1px;
+    width: 20px;
+    background: #C9A24A;
+    margin-left: 10px;
+    opacity: 0.3;
+  }
+
+  .footer-link {
+    font-size: 13px;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+  }
+
+  .footer-link:hover {
+    color: white;
+    transform: translateX(5px);
+  }
+
+  .social-icon-terminal {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    color: #C9A24A;
+    border-radius: 4px;
+    transition: all 0.4s;
+  }
+
+  .social-icon-terminal:hover {
+    background: #C9A24A;
+    color: black;
+    box-shadow: 0 0 20px rgba(201, 162, 74, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .logo-glow {
+    filter: drop-shadow(0 0 8px rgba(201, 162, 74, 0.4));
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #F5E3A6 0%, #C9A24A 45%, #8A6D2D 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+</style>
+  </footer><!-- MODALS --> <!-- Schedule Consultation Modal -->
+  <div class="modal" id="schedule-modal">
+   <div class="modal-content schedule">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+     <h2 class="font-heading text-3xl text-gray-900">Let's Transform Your Organization</h2><button id="close-schedule" style="background: none; border: none; cursor: pointer; font-size: 28px; color: #999; transition: all 0.3s;">×</button>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+     <div class="anim-slide-left delay-1">
+      <div style="background: linear-gradient(135deg, #C9A24A 0%, #A67C3B 100%); color: white; padding: 40px; border-radius: 12px; text-align: center; box-shadow: 0 20px 50px rgba(201, 162, 74, 0.3);"><i data-lucide="mail" style="width: 48px; height: 48px; margin: 0 auto 20px; display: block;"></i>
+       <p style="font-size: 14px; margin-bottom: 12px; opacity: 0.9;">Primary Contact</p><a href="mailto:Alvinchipmunk532@gmail.com" style="color: white; font-weight: 700; font-size: 18px; text-decoration: none; display: block; word-break: break-all;">Alvinchipmunk532@gmail.com</a>
+      </div>
+      <p style="color: #999; font-size: 14px; margin-top: 20px; text-align: center;">We'll respond within 24 hours</p>
+     </div>
+     <div class="anim-slide-right delay-2">
+      <div style="background: linear-gradient(135deg, #2B2B2B 0%, #1a1a1a 100%); color: white; padding: 40px; border-radius: 12px; text-align: center; box-shadow: 0 20px 50px rgba(43, 43, 43, 0.3);"><i data-lucide="phone" style="width: 48px; height: 48px; margin: 0 auto 20px; display: block;"></i>
+       <p style="font-size: 14px; margin-bottom: 12px; opacity: 0.9;">Call Us</p><a href="tel:+263772493099" style="color: #C9A24A; font-weight: 700; font-size: 18px; text-decoration: none; display: block;">+263 77 249 3099</a>
+      </div>
+      <p style="color: #999; font-size: 14px; margin-top: 20px; text-align: center;">Mon-Fri, 9AM-5PM</p>
+     </div>
+    </div>
+    <div style="background: #f8f8f8; padding: 24px; border-radius: 8px; border-left: 4px solid #C9A24A; margin-bottom: 24px;">
+     <p style="color: #2B2B2B; line-height: 1.8; margin: 0;">Schedule a consultation with our institutional architecture experts to discuss your organization's transformation needs. We specialize in governance-driven systems, human capital architecture, and sustainable organizational development.</p>
+    </div><button id="close-schedule-btn" class="btn-primary w-full" style="padding: 14px 32px; font-size: 16px;">Close</button>
+   </div>
+  </div><!-- Explore Features Modal --><div class="modal" id="features-modal">
+  <div class="modal-content large glass-panel-modal overflow-hidden">
+    
+    <div class="relative flex justify-between items-center mb-12 pb-6 border-b border-white/10 sticky top-0 bg-[#0A0A0A]/90 backdrop-blur-xl z-30">
+      <div>
+        <div class="flex items-center space-x-3 mb-2">
+          <div class="w-8 h-[1px] bg-[#C9A24A]"></div>
+          <span class="text-[9px] font-black uppercase tracking-[0.4em] gold-gradient-text">Internal Database</span>
+        </div>
+        <h2 class="font-heading text-3xl md:text-4xl text-white">Specialized <span class="gold-gradient-text">Units</span></h2>
+      </div>
+      <button id="close-features" class="close-terminal-btn">
+        <span class="text-[10px] mr-2 opacity-50 uppercase tracking-widest">Exit</span>
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 relative z-10">
+      
+      <div class="practice-node group">
+        <div class="node-header">
+          <div class="node-icon-box">
+            <i data-lucide="users" class="w-6 h-6 text-[#C9A24A]"></i>
+          </div>
+          <span class="node-tag">Unit 01</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3 group-hover:gold-gradient-text transition-all">Axios People</h3>
+        <p class="text-[10px] font-black text-[#C9A24A] tracking-[0.3em] mb-4 uppercase">Human Capital Architecture</p>
+        <p class="text-gray-400 text-sm leading-relaxed font-light">
+          Designing governance-driven workforce systems that align organizational strategy, structure, and performance for sustainable growth.
+        </p>
+        <div class="node-footer-line"></div>
+      </div>
+
+      <div class="practice-node group">
+        <div class="node-header">
+          <div class="node-icon-box">
+            <i data-lucide="cpu" class="w-6 h-6 text-[#C9A24A]"></i>
+          </div>
+          <span class="node-tag">Unit 02</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3 group-hover:gold-gradient-text transition-all">Axios Systems</h3>
+        <p class="text-[10px] font-black text-[#C9A24A] tracking-[0.3em] mb-4 uppercase">Digital Platforms</p>
+        <p class="text-gray-400 text-sm leading-relaxed font-light">
+          Development of high-performance technology platforms, integrating HRIS and automated governance solutions for institutional excellence.
+        </p>
+        <div class="node-footer-line"></div>
+      </div>
+
+      <div class="practice-node group">
+        <div class="node-header">
+          <div class="node-icon-box">
+            <i data-lucide="layers" class="w-6 h-6 text-[#C9A24A]"></i>
+          </div>
+          <span class="node-tag">Unit 03</span>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3 group-hover:gold-gradient-text transition-all">Axios XR</h3>
+        <p class="text-[10px] font-black text-[#C9A24A] tracking-[0.3em] mb-4 uppercase">Spatial Computing</p>
+        <p class="text-gray-400 text-sm leading-relaxed font-light">
+          Leading-edge Virtual and Augmented Reality solutions for complex architectural visualizations and high-stakes immersive training.
+        </p>
+        <div class="node-footer-line"></div>
+      </div>
+
+    </div>
+
+    <div class="mt-16 flex justify-center">
+      <button id="close-features-btn" class="terminal-close-btn group">
+        <span>Close Diagnostic Overlay</span>
+        <div class="btn-glow-gold"></div>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Modal Specific Styles */
+  .glass-panel-modal {
+    background: #0A0A0A !important;
+    border: 1px solid rgba(201, 162, 74, 0.2) !important;
+    box-shadow: 0 0 100px rgba(0,0,0,0.9), 0 0 40px rgba(201, 162, 74, 0.05);
+    border-radius: 4px !important;
+    padding: 60px !important;
+    max-width: 1000px !important;
+  }
+
+  .practice-node {
+    padding: 30px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    transition: all 0.5s ease;
+  }
+
+  .practice-node:hover {
+    background: rgba(201, 162, 74, 0.03);
+    border-color: rgba(201, 162, 74, 0.4);
+    transform: translateY(-5px);
+  }
+
+  .node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  .node-icon-box {
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(201, 162, 74, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .node-tag {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .node-footer-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #C9A24A;
+    transition: width 0.5s ease;
+  }
+
+  .practice-node:hover .node-footer-line {
+    width: 100%;
+  }
+
+  .close-terminal-btn {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+  }
+
+  .close-terminal-btn:hover {
+    color: #C9A24A;
+    transform: rotate(90deg);
+  }
+
+  .terminal-close-btn {
+    width: 100%;
+    padding: 18px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: white;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-weight: 800;
+    transition: all 0.5s;
+    position: relative;
+  }
+
+  .terminal-close-btn:hover {
+    border-color: #C9A24A;
+    color: #C9A24A;
+    background: rgba(201, 162, 74, 0.05);
+</style>
+
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e0e220b05af698a',t:'MTc3NDI3NjIxNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
